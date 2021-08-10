@@ -1,13 +1,29 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Form, TextField, Submit } from '@redwoodjs/forms'
+import { useMutation } from '@redwoodjs/web'
+
 import RepoDisplay from 'src/components/RepoDisplay'
 import ReposCell from 'src/components/ReposCell'
 
+const CREATE_REPO = gql`
+  mutation CreateRepoMutation($input: String!) {
+    createRepo(name: $input)
+  }
+`
+
 const ReposPage = () => {
+  const [create] = useMutation(CREATE_REPO)
+  const onSubmit = (data) => {
+    create({ variables: { input: data.input } })
+  }
   return (
     <>
       <h1>Look for Repos</h1>
       <RepoDisplay />
       <ReposCell />
+      <Form onSubmit={onSubmit}>
+        <TextField name="input" />
+        <Submit>Save</Submit>
+      </Form>
     </>
   )
 }

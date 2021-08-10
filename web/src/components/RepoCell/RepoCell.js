@@ -1,8 +1,6 @@
-import { Link, routes } from '@redwoodjs/router'
-
 export const QUERY = gql`
-  query ReposQuery {
-    repos {
+  query FindRepoQuery($name: String!) {
+    repo: repo(name: $name) {
       repo
       contents {
         type
@@ -21,15 +19,17 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
 )
 
-export const Success = ({ repos }) => {
+export const Success = ({ repo }) => {
+  const repoName = repo.repo
+  const contents = repo.contents
   return (
-    <ul>
-      {repos &&
-        repos.map((repo) => (
-          <div>
-            <Link to={routes.repo({ repoName: repo.repo })}>{repo.repo}</Link>
-          </div>
+    <>
+      <h1>{repoName}</h1>
+      <div>
+        {contents.map((content) => (
+          <div>{content.name}</div>
         ))}
-    </ul>
+      </div>
+    </>
   )
 }

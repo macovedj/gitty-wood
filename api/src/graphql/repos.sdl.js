@@ -1,9 +1,21 @@
 export const schema = gql`
-  type Repos {
-    repos: [String]
+  type Content {
+    type: String!
+    sha: String!
+    name: String!
+  }
+
+  type Repo {
+    repo: String!
+    contents: [Content]
   }
 
   type Query {
-    repos: Repos!
+    repos: [Repo]!
+    repo(name: String!): Repo!
+  }
+
+  type Mutation {
+    createRepo(name: String!): String!
   }
 `

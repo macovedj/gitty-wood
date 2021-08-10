@@ -23,6 +23,7 @@ const Routes = () => {
         </Set>
       </Private>
       <Set wrap={BlogLayout}>
+        <Route path="/repo/{repoName:String}" page={RepoPage} name="repo" />
         <Route path="/repos" page={ReposPage} name="repos" />
         <Route path="/contact" page={ContactPage} name="contact" />
         <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
