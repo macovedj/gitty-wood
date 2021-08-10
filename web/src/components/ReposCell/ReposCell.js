@@ -15,9 +15,10 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ repos }) => {
+  console.log({ repos }, 'cell')
   return (
     <ul>
-      {repos.map((item) => {
+      {repos.repos.map((item) => {
         return <li key={item.id}>{JSON.stringify(item)}</li>
       })}
     </ul>
