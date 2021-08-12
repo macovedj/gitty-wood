@@ -1,7 +1,6 @@
 import { Form, TextField, Submit } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 
-import RepoDisplay from 'src/components/RepoDisplay'
 import ReposCell from 'src/components/ReposCell'
 
 const CREATE_REPO = gql`
@@ -18,7 +17,6 @@ const ReposPage = () => {
   return (
     <>
       <h1>Look for Repos</h1>
-      <RepoDisplay />
       <ReposCell />
       <Form onSubmit={onSubmit}>
         <TextField name="input" />

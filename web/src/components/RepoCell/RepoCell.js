@@ -1,3 +1,5 @@
+import { Link, routes } from '@redwoodjs/router'
+
 export const QUERY = gql`
   query FindRepoQuery($name: String!) {
     repo: repo(name: $name) {
@@ -27,7 +29,17 @@ export const Success = ({ repo }) => {
       <h1>{repoName}</h1>
       <div>
         {contents.map((content) => (
-          <div>{content.name}</div>
+          <div>
+            <Link
+              to={
+                content.type === 'blob'
+                  ? routes.file({ repoName, filePath: content.name })
+                  : routes.directory({ repoName, filePath: content.name })
+              }
+            >
+              {content.name}
+            </Link>
+          </div>
         ))}
       </div>
     </>

@@ -1,11 +1,11 @@
 import { render } from '@redwoodjs/testing'
 
-import RepoDisplay from './RepoDisplay'
+import DirectoryPage from './DirectoryPage'
 
-describe('RepoDisplay', () => {
+describe('DirectoryPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<RepoDisplay />)
+      render(<DirectoryPage />)
     }).not.toThrow()
   })
 })

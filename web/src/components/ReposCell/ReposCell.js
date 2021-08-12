@@ -22,12 +22,13 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ repos }) => {
+  console.log({ repos })
   return (
     <ul>
       {repos &&
-        repos.map((repo) => (
+        repos.map(({ repo }) => (
           <div>
-            <Link to={routes.repo({ repoName: repo.repo })}>{repo.repo}</Link>
+            <Link to={routes.repo({ repoName: repo })}>{repo}</Link>
           </div>
         ))}
     </ul>
