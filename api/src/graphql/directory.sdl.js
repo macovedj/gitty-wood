@@ -1,4 +1,10 @@
 export const schema = gql`
+  type Directory {
+    repoName: String
+    path: String
+    folderContents: [Content]
+  }
+
   type Content {
     type: String
     sha: String
@@ -6,6 +12,6 @@ export const schema = gql`
   }
 
   type Query {
-    directory(repoName: String, filePath: String): [Content]
+    directory(repoName: String, path: String): Directory
   }
 `

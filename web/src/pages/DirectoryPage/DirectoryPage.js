@@ -1,12 +1,11 @@
 import { Link, routes } from '@redwoodjs/router'
 import DirectoryCell from 'src/components/DirectoryCell'
 
-const DirectoryPage = ({ repoName, filePath }) => {
-  console.log({ repoName, filePath })
+const DirectoryPage = ({ repoName, path }) => {
   return (
     <>
       <h1>DirectoryPage</h1>
-      <DirectoryCell repoName={repoName} filePath={filePath} />
+      <DirectoryCell repoName={repoName} path={path} />
     </>
   )
 }

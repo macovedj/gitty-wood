@@ -11,9 +11,15 @@ import { Router, Route, Set, Private } from '@redwoodjs/router'
 import PostsLayout from 'src/layouts/PostsLayout'
 import BlogLayout from 'src/layouts/BlogLayout'
 
+const userRouteParamTypes = {
+  dir: {
+    constraint: /.*/,
+  },
+}
+
 const Routes = () => {
   return (
-    <Router>
+    <Router paramTypes={userRouteParamTypes}>
       <Private unauthenticated="home">
         <Set wrap={PostsLayout}>
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
@@ -23,8 +29,8 @@ const Routes = () => {
         </Set>
       </Private>
       <Set wrap={BlogLayout}>
-        <Route path="/repo/{repoName:String}/directory/{filePath:String}" page={DirectoryPage} name="directory" />
-        <Route path="/repo/{repoName:String}/file/{filePath:String}" page={FilePage} name="file" />
+        <Route path="/repo/{repoName:String}/directory/{path:dir}" page={DirectoryPage} name="directory" />
+        <Route path="/repo/{repoName:String}/file/{filePath:dir}" page={FilePage} name="file" />
         <Route path="/repo/{repoName:String}" page={RepoPage} name="repo" />
         <Route path="/repos" page={ReposPage} name="repos" />
         <Route path="/contact" page={ContactPage} name="contact" />

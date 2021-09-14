@@ -33,8 +33,8 @@ export const Success = ({ repo }) => {
             <Link
               to={
                 content.type === 'blob'
-                  ? routes.file({ repoName, filePath: content.name })
-                  : routes.directory({ repoName, filePath: content.name })
+                  ? routes.file({ repoName, path: content.name })
+                  : routes.directory({ repoName, path: content.name })
               }
             >
               {content.name}
