@@ -2,6 +2,7 @@ import { Form, TextField, Submit } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 
 import ReposCell from 'src/components/ReposCell'
+import { QUERY } from 'src/components/ReposCell'
 
 const CREATE_REPO = gql`
   mutation CreateRepoMutation($input: String!) {
@@ -10,7 +11,9 @@ const CREATE_REPO = gql`
 `
 
 const ReposPage = () => {
-  const [create] = useMutation(CREATE_REPO)
+  const [create] = useMutation(CREATE_REPO, {
+    refetchQueries: [{ query: QUERY }],
+  })
   const onSubmit = (data) => {
     create({ variables: { input: data.input } })
   }
