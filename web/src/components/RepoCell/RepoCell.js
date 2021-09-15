@@ -28,19 +28,23 @@ export const Success = ({ repo }) => {
     <>
       <h1>{repoName}</h1>
       <div>
-        {contents.map((content) => (
-          <div>
-            <Link
-              to={
-                content.type === 'blob'
-                  ? routes.file({ repoName, filePath: content.name })
-                  : routes.directory({ repoName, path: content.name })
-              }
-            >
-              {content.name}
-            </Link>
-          </div>
-        ))}
+        {contents.length === 0 ? (
+          <div>No commits made to repo yet</div>
+        ) : (
+          contents.map((content) => (
+            <div>
+              <Link
+                to={
+                  content.type === 'blob'
+                    ? routes.file({ repoName, filePath: content.name })
+                    : routes.directory({ repoName, path: content.name })
+                }
+              >
+                {content.name}
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     </>
   )
