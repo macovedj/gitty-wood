@@ -33,6 +33,7 @@ export const Success = ({ repo }) => {
         ) : (
           contents.map((content) => (
             <div>
+              {content.type === 'blob' ? `file: ` : `directory: `}
               <Link
                 to={
                   content.type === 'blob'

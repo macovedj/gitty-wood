@@ -27,6 +27,7 @@ export const Success = ({ repoName, directory }) => {
     <div>
       {directory.folderContents.map((content) => (
         <div>
+          {content.type === 'blob' ? `file: ` : `directory: `}
           <Link
             to={
               content.type === 'blob'
