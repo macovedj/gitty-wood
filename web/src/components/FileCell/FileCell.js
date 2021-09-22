@@ -1,3 +1,5 @@
+import './FileCell.css'
+
 export const QUERY = gql`
   query FindFileQuery($repoName: String, $filePath: String) {
     file(repoName: $repoName, filePath: $filePath)
@@ -13,5 +15,7 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ file }) => {
-  return <div>{JSON.stringify(file)}</div>
+  console.log(file)
+  const text = JSON.stringify(file)
+  return <div className="file">{file}</div>
 }
