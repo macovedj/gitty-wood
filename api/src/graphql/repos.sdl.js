@@ -8,6 +8,7 @@ export const schema = gql`
   type Repo {
     repo: String!
     contents: [Content]
+    branches: [String]
   }
 
   type Query {

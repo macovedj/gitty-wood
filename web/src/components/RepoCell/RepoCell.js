@@ -1,4 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
+import Select from 'react-select'
 
 export const QUERY = gql`
   query FindRepoQuery($name: String!) {
@@ -9,6 +10,7 @@ export const QUERY = gql`
         name
         sha
       }
+      branches
     }
   }
 `
@@ -22,11 +24,20 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ repo }) => {
-  const repoName = repo.repo
-  const contents = repo.contents
+  // const repoName = repo.repo
+  // const contents = repo.contents
+  // const branches = repo.branches
+  const { repoName, contents, branches } = repo
   return (
     <>
       <h1>{repoName}</h1>
+      <div>
+        <div>choose another branch?</div>
+        <Select
+          options={branches.map((branch) => ({ value: branch, label: branch }))}
+        />
+        {/* <div>{branches}</div> */}
+      </div>
       <div>
         {contents.length === 0 ? (
           <div>No commits made to repo yet</div>

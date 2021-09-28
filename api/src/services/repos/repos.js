@@ -9,7 +9,8 @@ export const repos = async () => {
 export const repo = async ({ name }) => {
   const repo = await fetch(`http://64.227.20.27:8080/repo/${name}`)
   const body = await repo.json()
-  return { repo: name, contents: body.repoContents }
+  console.log({ body })
+  return { repo: name, contents: body.repoContents, branches: body.branches }
 }
 
 export const createRepo = async ({ name }) => {
