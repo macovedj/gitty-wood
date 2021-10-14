@@ -28,7 +28,7 @@ const ReposPage = () => {
               <button onClick={requestAccount}>Connect</button>
             </>
           ) : (
-            <>{ethAccount}</>
+            <>{`Connected to ${ethAccount}`}</>
           )}
           <h1>Look for Repos</h1>
           <ReposCell />
