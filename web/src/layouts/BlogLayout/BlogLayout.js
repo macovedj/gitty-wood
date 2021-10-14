@@ -1,5 +1,4 @@
 // web/src/layouts/BlogLayout/BlogLayout.js
-
 import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
@@ -13,6 +12,7 @@ const BlogLayout = ({ children }) => {
         </h1>
         <nav>
           <ul>
+            <li></li>
             <li>
               <Link to={routes.about()}>About</Link>
             </li>

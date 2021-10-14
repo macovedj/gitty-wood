@@ -7,9 +7,11 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
+import { useState } from 'react'
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 import PostsLayout from 'src/layouts/PostsLayout'
 import BlogLayout from 'src/layouts/BlogLayout'
+import EthContext from 'src/context/EthContext'
 
 const userRouteParamTypes = {
   dir: {
@@ -28,7 +30,7 @@ const Routes = () => {
           <Route path="/admin/posts" page={PostPostsPage} name="posts" />
         </Set>
       </Private>
-      <Set wrap={BlogLayout}>
+      <Set wrap={EthContext}>
         <Route path="/repo/{repoName:String}/directory/{path:dir}" page={DirectoryPage} name="directory" />
         <Route path="/repo/{repoName:String}/file/{filePath:dir}" page={FilePage} name="file" />
         <Route path="/repo/{repoName:String}" page={RepoPage} name="repo" />

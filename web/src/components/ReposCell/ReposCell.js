@@ -22,7 +22,6 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ repos }) => {
-  console.log({ repos })
   return (
     <ul>
       {repos &&
