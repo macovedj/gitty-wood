@@ -10,8 +10,10 @@ export default ({ children }) => {
     })
     setAccount(account || 'No account connected')
   }
-  requestAccount()
+  // requestAccount()
   return (
-    <EthContext.Provider value={ethAccount}>{children}</EthContext.Provider>
+    <EthContext.Provider value={{ ethAccount, requestAccount }}>
+      {children}
+    </EthContext.Provider>
   )
 }
