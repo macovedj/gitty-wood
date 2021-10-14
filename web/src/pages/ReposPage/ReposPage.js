@@ -19,26 +19,14 @@ const ReposPage = () => {
     create({ variables: { input: data.input } })
   }
   return (
-    <EthContext.Consumer>
-      {({ ethAccount, requestAccount }) => (
-        <>
-          {ethAccount === 'No account connected' ? (
-            <>
-              <>{`${ethAccount}, click below to connect to Metamask`}</>
-              <button onClick={requestAccount}>Connect</button>
-            </>
-          ) : (
-            <>{`Connected to ${ethAccount}`}</>
-          )}
-          <h1>Look for Repos</h1>
-          <ReposCell />
-          <Form onSubmit={onSubmit}>
-            <TextField name="input" />
-            <Submit>Create Repo</Submit>
-          </Form>
-        </>
-      )}
-    </EthContext.Consumer>
+    <>
+      <h1>Look for Repos</h1>
+      <ReposCell />
+      <Form onSubmit={onSubmit}>
+        <TextField name="input" />
+        <Submit>Create Repo</Submit>
+      </Form>
+    </>
   )
 }
 

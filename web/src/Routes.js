@@ -7,10 +7,9 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { useState } from 'react'
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 import PostsLayout from 'src/layouts/PostsLayout'
-import BlogLayout from 'src/layouts/BlogLayout'
+import EthLayout from 'src/layouts/EthLayout'
 import EthContext from 'src/context/EthContext'
 
 const userRouteParamTypes = {
@@ -30,16 +29,16 @@ const Routes = () => {
           <Route path="/admin/posts" page={PostPostsPage} name="posts" />
         </Set>
       </Private>
-      <Set wrap={EthContext}>
+      <Set wrap={[EthContext, EthLayout]}>
         <Route path="/repo/{repoName:String}/directory/{path:dir}" page={DirectoryPage} name="directory" />
         <Route path="/repo/{repoName:String}/file/{filePath:dir}" page={FilePage} name="file" />
         <Route path="/repo/{repoName:String}" page={RepoPage} name="repo" />
         <Route path="/repos" page={ReposPage} name="repos" />
-        <Route path="/contact" page={ContactPage} name="contact" />
-        <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
-        <Route path="/about" page={AboutPage} name="about" />
-        <Route path="/" page={HomePage} name="home" />
       </Set>
+      <Route path="/contact" page={ContactPage} name="contact" />
+      <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
+      <Route path="/about" page={AboutPage} name="about" />
+      <Route path="/" page={HomePage} name="home" />
       <Route notfound page={NotFoundPage} />
     </Router>
   )
