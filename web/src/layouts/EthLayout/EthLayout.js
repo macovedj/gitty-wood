@@ -10,7 +10,7 @@ const EthLayout = ({ children }) => (
             <button onClick={requestAccount}>Connect</button>
           </>
         ) : (
-          <>{`Connected to ${ethAccount}`}</>
+          <div>{`Connected to ${ethAccount}`}</div>
         )}
         {children}
       </>

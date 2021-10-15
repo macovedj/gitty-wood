@@ -19,11 +19,17 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 module.exports = {
   solidity: '0.8.4',
   paths: {
-    artifacts: './src/artifacts',
+    artifacts: './web/src/artifacts',
   },
   networks: {
     hardhat: {
       chainId: 1337,
+    },
+    ropsten: {
+      url: 'https://ropsten.infura.io/v3/6f37a83d3bc941e0a298a7cbdfc874ec',
+      accounts: [
+        `0x7073bb1e23bca6174388f1d9a79b05097519b2e6b0ec9536c8443d540e76542c`,
+      ],
     },
   },
 }
