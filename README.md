@@ -1,4 +1,4 @@
-#Gitty
+# Gitty
 
 - Gitty takes inspiration from Github.
 - Gitty exists to help incentivize open source software development.
