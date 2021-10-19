@@ -57,7 +57,6 @@ const RepoPage = ({ repoName }) => {
   }
 
   async function sendShares({ Receiver, Amount }) {
-    console.log({ Receiver, Amount, repoName })
     if (typeof window.ethereum !== 'undefined') {
       await requestAccount()
       const provider = new ethers.providers.Web3Provider(window.ethereum)
