@@ -3,6 +3,7 @@ import { useMutation } from '@redwoodjs/web'
 
 import ReposCell from 'src/components/ReposCell'
 import { QUERY } from 'src/components/ReposCell'
+import { EthContext } from 'src/context/EthContext'
 
 const CREATE_REPO = gql`
   mutation CreateRepoMutation($input: String!) {
@@ -23,7 +24,7 @@ const ReposPage = () => {
       <ReposCell />
       <Form onSubmit={onSubmit}>
         <TextField name="input" />
-        <Submit>Save</Submit>
+        <Submit>Create Repo</Submit>
       </Form>
     </>
   )

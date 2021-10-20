@@ -1,24 +1,10 @@
-# Redwood
+# Gitty
 
-> **WARNING:** RedwoodJS software has not reached a stable version 1.0 and should not be considered suitable for production use. In the "make it work; make it right; make it fast" paradigm, Redwood is in the later stages of the "make it work" phase.
-
-## Getting Started
-- [Tutorial](https://redwoodjs.com/tutorial/welcome-to-redwood): getting started and complete overview guide.
-- [Docs](https://redwoodjs.com/docs/introduction): using the Redwood Router, handling assets and files, list of command-line tools, and more.
-- [Redwood Community](https://community.redwoodjs.com): get help, share tips and tricks, and collaborate on everything about RedwoodJS.
-
-### Setup
-
-We use Yarn as our package manager. To get the dependencies installed, just do this in the root directory:
-
-```terminal
-yarn install
-```
-
-### Fire it up
-
-```terminal
-yarn redwood dev
-```
-
-Your browser should open automatically to `http://localhost:8910` to see the web app. Lambda functions run on `http://localhost:8911` and are also proxied to `http://localhost:8910/.redwood/functions/*`. 
+- Gitty takes inspiration from Github.
+- Gitty exists to help incentivize open source software development.
+- Ethereum contracts seem to make it a lot easier to develop what Gitty is trying to do
+- Specifically, Ethereum enables select equity holders to only increase the number of holders after they've voted... and handles a lot of that development work for you
+- Gitty provides a means by which core contributors can have financial stake in their project
+- When an individual has demonstrated to core contributors that they can offer technical, legal/administrative, or financial support to their project, the core developers can give them equity in their repo in exchange for their offered support
+- This incentivizes stake holders to increase the value of the code... the code is an asset that offers utility, and that is how it derives it's value, even though it is free to use
+- If one of afforementioned points proves to contribute to a poor incentive structure... it will be reavaluated
