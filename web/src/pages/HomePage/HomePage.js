@@ -36,6 +36,9 @@ const HomePage = () => {
         incentive structure... it will be reavaluated
       </ul>
       <Link to="/repos">Check it out</Link>
+      <div>
+        <a href="https://discord.gg/mqWHKaZJ">Discord Server</a>
+      </div>
     </>
   )
 }
