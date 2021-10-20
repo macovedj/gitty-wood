@@ -33,7 +33,7 @@ const HomePage = () => {
       </ul>
       <ul>
         If one of afforementioned points proves to contribute to a poor
-        incentive structure... it will be reavaluated
+        incentive structure... it will be reevaluated
       </ul>
       <Link to="/repos">Check it out</Link>
       <div>
