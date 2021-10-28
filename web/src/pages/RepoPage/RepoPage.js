@@ -5,7 +5,7 @@ import { Link, routes } from '@redwoodjs/router'
 import RepoCell from 'src/components/RepoCell'
 import Token from 'src/artifacts/contracts/Token.sol/Token.json'
 
-const tokenAddress = '0xe3c9f1F4f0a054F64048f3f6301dbde4A7426c8b'
+const tokenAddress = '0xE01daAB23f9Ec10FB2aBe1EF8Ff54Ed50f1029e9'
 
 const RepoPage = ({ repoName }) => {
   const [balance, setBalance] = useState('')

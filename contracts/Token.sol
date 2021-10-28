@@ -19,7 +19,6 @@ contract Token {
   function transfer(address to, uint amount, string memory repoName) external {
     require(balances[repoName][msg.sender] >= amount, "Not enough tokens");
     balances[repoName][msg.sender] -= amount;
-    balances[repoName][to] += amount;
     bool isAlreadyOwner = false;
 
     for (uint i=0; i < numberOfRepoOwners[repoName]; i++) {
