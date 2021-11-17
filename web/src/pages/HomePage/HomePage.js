@@ -37,7 +37,7 @@ const HomePage = () => {
       </ul>
       <Link to="/repos">Check it out</Link>
       <div>
-        <a href="https://discord.gg/mqWHKaZJ">Discord Server</a>
+        <a href="https://discord.gg/SZGGsmXkbX">Discord Server</a>
       </div>
     </>
   )
