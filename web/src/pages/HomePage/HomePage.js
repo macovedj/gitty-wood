@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Link } from '@redwoodjs/router'
 import qs from 'qs'
+import axios from 'axios'
 
 const changeHandler = (e, setLogin) => {
   setLogin(e.target.value)
@@ -9,8 +10,11 @@ const changeHandler = (e, setLogin) => {
 
 const HomePage = (params) => {
   const queryString = window.location.search
-  const queryParams = qs.parse(queryString)
-  console.log(queryParams)
+  const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
+  if (code) {
+    const accessToken = axios.get(`http://64.227.20.27:8443/access?${code}`)
+    console.log(accessToken)
+  }
   const [login, setLogin] = useState('')
   return (
     <>

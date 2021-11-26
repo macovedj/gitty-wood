@@ -20,7 +20,7 @@ const userRouteParamTypes = {
 
 const Routes = () => {
   return (
-    <Router paramTypes={userRouteParamTypes}>
+    <Router paramTypes={userRouteParamTypes} trailingSlashes={'never'}>
       <Private unauthenticated="home">
         <Set wrap={PostsLayout}>
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
