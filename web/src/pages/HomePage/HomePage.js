@@ -1,8 +1,15 @@
-// web/src/pages/HomePage/HomePage.js
+import { useState } from 'react'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link } from '@redwoodjs/router'
 
-const HomePage = () => {
+const changeHandler = (e, setLogin) => {
+  setLogin(e.target.value)
+}
+
+const HomePage = (params) => {
+  console.log({ params })
+  console.log(window.location.search)
+  const [login, setLogin] = useState('')
   return (
     <>
       <ul>Gitty takes inspiration from Github</ul>
@@ -39,6 +46,12 @@ const HomePage = () => {
       <div>
         <a href="https://discord.gg/SZGGsmXkbX">Discord Server</a>
       </div>
+      <input type="text" onChange={(e) => changeHandler(e, setLogin)} />
+      <a
+        href={`https://github.com/login/oauth/authorize?client_id=Iv1.75505cdc084078d2&login=${login}`}
+      >
+        Sign in
+      </a>
     </>
   )
 }
