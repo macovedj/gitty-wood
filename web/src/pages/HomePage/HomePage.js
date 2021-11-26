@@ -1,14 +1,16 @@
 import { useState } from 'react'
 
 import { Link } from '@redwoodjs/router'
+import qs from 'qs'
 
 const changeHandler = (e, setLogin) => {
   setLogin(e.target.value)
 }
 
 const HomePage = (params) => {
-  console.log({ params })
-  console.log(window.location.search)
+  const queryString = window.location.search
+  const queryParams = qs.parse(queryString)
+  console.log(queryParams)
   const [login, setLogin] = useState('')
   return (
     <>
