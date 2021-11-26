@@ -13,7 +13,9 @@ const HomePage = (params) => {
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
   if (code) {
     const accessToken = axios.get(`http://64.227.20.27:8443/access?${code}`)
-    accessToken.then((res) => console.log(res))
+    accessToken
+      .then((res) => console.log(res))
+      .catch((err) => console.log({ err }))
   }
   const [login, setLogin] = useState('')
   return (
