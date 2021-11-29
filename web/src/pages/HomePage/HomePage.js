@@ -11,8 +11,11 @@ const changeHandler = (e, setLogin) => {
 const HomePage = (params) => {
   const queryString = window.location.search
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
+  console.log('CODE: ', code)
   if (code) {
-    const accessToken = axios.get(`http://64.227.20.27:8443/access?${code}`)
+    const accessToken = axios.get(
+      `https://gitty.interpretations.dev/access?code=${code}`
+    )
     accessToken
       .then((res) => console.log(res))
       .catch((err) => console.log({ err }))
