@@ -1,6 +1,8 @@
 datasource db {
   provider = "postgresql"
+  // provider = "sqlite"
   url      = env("DATABASE_URL")
+  // url = "file:db.json"
 }
 
 generator client {
@@ -24,4 +26,10 @@ model Contact {
   email     String
   message   String
   createdAt DateTime @default(now())
+}
+
+model User {
+  id        Int @id @default(autoincrement())
+  name String
+  repos String[]
 }

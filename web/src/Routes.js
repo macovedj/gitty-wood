@@ -8,6 +8,7 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set, Private } from '@redwoodjs/router'
+import UsersLayout from 'src/layouts/UsersLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
 import EthLayout from 'src/layouts/EthLayout'
 import EthContext from 'src/context/EthContext'
@@ -21,6 +22,12 @@ const userRouteParamTypes = {
 const Routes = () => {
   return (
     <Router trailingSlashes={'preserve'} paramTypes={userRouteParamTypes}>
+      <Set wrap={UsersLayout}>
+        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
+        <Route path="/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
+        <Route path="/users/{id:Int}" page={UserUserPage} name="user" />
+        <Route path="/users" page={UserUsersPage} name="users" />
+      </Set>
       <Private unauthenticated="home">
         <Set wrap={PostsLayout}>
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
