@@ -1,6 +1,6 @@
 import { AuthProvider } from '@redwoodjs/auth'
-import netlifyIdentity from 'netlify-identity-widget'
-import { isBrowser } from '@redwoodjs/prerender/browserUtils'
+import { createClient } from '@supabase/supabase-js'
+
 
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
@@ -13,12 +13,17 @@ import './index.css'
 
 
 
-isBrowser && netlifyIdentity.init()
+
+
+const supabaseClient = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_KEY
+  )
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider>
-      <AuthProvider client={netlifyIdentity} type="netlify">
+      <AuthProvider client={supabaseClient} type="supabase">
         <RedwoodApolloProvider>
           <Routes />
         </RedwoodApolloProvider>

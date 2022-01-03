@@ -1,14 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useAuth } from '@redwoodjs/auth'
 
 import { Link } from '@redwoodjs/router'
 import qs from 'qs'
 import axios from 'axios'
 
+import Account from 'src/components/Account'
+import Auth from 'src/components/Auth'
+
 const changeHandler = (e, setLogin) => {
   setLogin(e.target.value)
 }
 
+const authenticate = async ({ supabase, currentUser, logout }) => {
+  const { user, session, error } = await supabase.auth.signIn({
+    provider: 'github',
+  })
+  console.log({ currentUser, logout, user, session, error })
+}
+
 const HomePage = (params) => {
+  const { client: supabase, currentUser, logOut, isAuthenticated } = useAuth()
+  useEffect(authenticate({ supabase, currentUser, logOut }), [])
   const queryString = window.location.search
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
   console.log('CODE: ', code)
@@ -23,7 +36,8 @@ const HomePage = (params) => {
   const [login, setLogin] = useState('')
   return (
     <>
-      <ul>Gitty takes inspiration from Github</ul>
+      {!isAuthenticated ? <Auth /> : <Account />}
+      {/* <ul>Gitty takes inspiration from Github</ul>
       <ul>Gitty exists to help incentivize open source software development</ul>
       <ul>
         Ethereum contracts seem to make it a lot easier to develop what Gitty is
@@ -62,7 +76,7 @@ const HomePage = (params) => {
         href={`https://github.com/login/oauth/authorize?client_id=Iv1.75505cdc084078d2&login=${login}`}
       >
         Sign in
-      </a>
+      </a> */}
     </>
   )
 }
