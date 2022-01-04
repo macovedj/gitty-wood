@@ -27,6 +27,8 @@ const Authenticate = async ({
 
 const HomePage = (params) => {
   const { client: supabase, currentUser, logOut, isAuthenticated } = useAuth()
+  console.log({ supabase, currentUser, logOut, isAuthenticated })
+  // Authenticate({ supabase, currentUser, logOut, isAuthenticated })
   const [isClientAuthenticated, setIsClientAuthenticated] = useState(false)
   useEffect(() => {
     const nextIsAuthenticated = Authenticate({
@@ -35,20 +37,20 @@ const HomePage = (params) => {
       logOut,
       isAuthenticated,
     })
-    setIsClientAuthenticated(nextIsAuthenticated)
+    //   setIsClientAuthenticated(nextIsAuthenticated)
   }, [])
   const queryString = window.location.search
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
   console.log('CODE: ', code)
-  if (code) {
-    const accessToken = axios.get(
-      `https://gitty.interpretations.dev/access?code=${code}`
-    )
-    accessToken
-      .then((res) => console.log(res))
-      .catch((err) => console.log({ err }))
-  }
-  const [login, setLogin] = useState('')
+  // if (code) {
+  //   const accessToken = axios.get(
+  //     `https://gitty.interpretations.dev/access?code=${code}`
+  //   )
+  //   accessToken
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log({ err }))
+  // }
+  // const [login, setLogin] = useState('')
   return (
     <>
       {/* {!isAuthenticated ? <Auth /> : <Account />} */}
