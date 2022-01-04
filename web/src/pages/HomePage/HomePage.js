@@ -12,16 +12,31 @@ const changeHandler = (e, setLogin) => {
   setLogin(e.target.value)
 }
 
-const authenticate = async ({ supabase, currentUser, logout }) => {
+const Authenticate = async ({
+  supabase,
+  currentUser,
+  logOut,
+  isAuthenticated,
+}) => {
   const { user, session, error } = await supabase.auth.signIn({
     provider: 'github',
   })
-  console.log({ currentUser, logout, user, session, error })
+  console.log({ currentUser, logOut, user, session, error, isAuthenticated })
+  return isAuthenticated
 }
 
 const HomePage = (params) => {
   const { client: supabase, currentUser, logOut, isAuthenticated } = useAuth()
-  useEffect(authenticate({ supabase, currentUser, logOut }), [])
+  const [isClientAuthenticated, setIsClientAuthenticated] = useState(false)
+  useEffect(() => {
+    const nextIsAuthenticated = Authenticate({
+      supabase,
+      currentUser,
+      logOut,
+      isAuthenticated,
+    })
+    setIsClientAuthenticated(nextIsAuthenticated)
+  }, [])
   const queryString = window.location.search
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
   console.log('CODE: ', code)
@@ -36,7 +51,8 @@ const HomePage = (params) => {
   const [login, setLogin] = useState('')
   return (
     <>
-      {!isAuthenticated ? <Auth /> : <Account />}
+      {/* {!isAuthenticated ? <Auth /> : <Account />} */}
+      <Auth />
       {/* <ul>Gitty takes inspiration from Github</ul>
       <ul>Gitty exists to help incentivize open source software development</ul>
       <ul>
