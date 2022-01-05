@@ -20,6 +20,7 @@ const Authenticate = async ({
 }) => {
   const { user, session, error } = await supabase.auth.signIn({
     provider: 'github',
+    scopes: 'user',
   })
   console.log({ currentUser, logOut, user, session, error, isAuthenticated })
   return isAuthenticated
