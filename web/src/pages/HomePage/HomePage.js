@@ -31,12 +31,14 @@ const HomePage = (params) => {
   // Authenticate({ supabase, currentUser, logOut, isAuthenticated })
   const [isClientAuthenticated, setIsClientAuthenticated] = useState(false)
   useEffect(() => {
-    const nextIsAuthenticated = Authenticate({
-      supabase,
-      currentUser,
-      logOut,
-      isAuthenticated,
-    })
+    if (!isAuthenticated) {
+      const nextIsAuthenticated = Authenticate({
+        supabase,
+        currentUser,
+        logOut,
+        isAuthenticated,
+      })
+    }
     //   setIsClientAuthenticated(nextIsAuthenticated)
   }, [])
   const queryString = window.location.search
