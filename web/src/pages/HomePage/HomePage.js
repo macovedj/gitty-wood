@@ -31,8 +31,9 @@ const HomePage = (params) => {
   console.log({ supabase, currentUser, logOut, isAuthenticated })
   // Authenticate({ supabase, currentUser, logOut, isAuthenticated })
   const [isClientAuthenticated, setIsClientAuthenticated] = useState(false)
+  const queryString = window.location.search
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!queryString) {
       const nextIsAuthenticated = Authenticate({
         supabase,
         currentUser,
@@ -42,7 +43,6 @@ const HomePage = (params) => {
     }
     //   setIsClientAuthenticated(nextIsAuthenticated)
   }, [])
-  const queryString = window.location.search
   console.log({ queryString })
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
   console.log('CODE: ', code)
