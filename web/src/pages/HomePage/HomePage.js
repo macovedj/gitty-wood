@@ -40,6 +40,7 @@ const HomePage = (params) => {
     //   setIsClientAuthenticated(nextIsAuthenticated)
   }, [])
   const queryString = window.location.search
+  console.log({ queryString })
   const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
   console.log('CODE: ', code)
   // if (code) {
