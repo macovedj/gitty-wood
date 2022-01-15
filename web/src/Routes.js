@@ -19,7 +19,8 @@ const userRouteParamTypes = {
   },
 }
 
-const Routes = () => {
+const Routes = (params) => {
+  console.log(params)
   return (
     <Router trailingSlashes={'preserve'} paramTypes={userRouteParamTypes}>
       <Set wrap={UsersLayout}>
