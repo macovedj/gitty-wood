@@ -1,26 +1,14 @@
 import { useState } from 'react'
-import { useAuth } from '@redwoodjs/auth'
 
-const Auth = () => {
-  const { logIn } = useAuth()
-  const [loading, setLoading] = useState(false)
-  const [email, setEmail] = useState('')
+const signIn = async ({ supabase }) => {
+  await supabase.auth.signIn({
+    provider: 'github',
+  })
+}
 
-  const handleLogin = async (email) => {
-    try {
-      setLoading(true)
-      const { error } = await logIn({ email })
-      if (error) throw error
-      alert('Check your email for the login link!')
-    } catch (error) {
-      alert(error.error_description || error.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
+const Auth = ({ supabase }) => {
   return (
-    <>hello</>
+    <button onClick={() => signIn({ supabase })}>Sign in</button>
     // <div className="row flex flex-center">
     //   <div className="col-6 form-widget">
     //     <h1 className="header">Supabase + RedwoodJS</h1>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@redwoodjs/auth'
+// import { context } from '@redwoodjs/api'
 
 import { Link } from '@redwoodjs/router'
 import qs from 'qs'
@@ -11,55 +12,43 @@ import Auth from 'src/components/Auth'
 const changeHandler = (e, setLogin) => {
   setLogin(e.target.value)
 }
+async function checkUser({ supabase, setUser }) {
+  const user = await supabase.auth.user()
+  console.log({ user })
+  setUser(user)
+}
 
-const Authenticate = async ({
-  supabase,
-  currentUser,
-  logOut,
-  isAuthenticated,
-}) => {
-  const { user, session, error } = await supabase.auth.signIn({
+async function signInWithGithub({ supabase }) {
+  await supabase.auth.signIn({
     provider: 'github',
-    scopes: 'user',
   })
-  console.log({ currentUser, logOut, user, session, error, isAuthenticated })
-  return isAuthenticated
+}
+async function signOut({ supabase, setUser }) {
+  await supabase.auth.signOut()
+  setUser(null)
 }
 
 const HomePage = (params) => {
-  const { client: supabase, currentUser, logOut, isAuthenticated } = useAuth()
-  console.log({ supabase, currentUser, logOut, isAuthenticated })
-  // Authenticate({ supabase, currentUser, logOut, isAuthenticated })
-  const [isClientAuthenticated, setIsClientAuthenticated] = useState(false)
-  const queryString = window.location.search
+  const [user, setUser] = useState(null)
+  const { client: supabase } = useAuth()
+
   useEffect(() => {
-    if (!queryString) {
-      const nextIsAuthenticated = Authenticate({
-        supabase,
-        currentUser,
-        logOut,
-        isAuthenticated,
-      })
-    }
-    //   setIsClientAuthenticated(nextIsAuthenticated)
+    checkUser({ supabase, setUser })
   }, [])
-  console.log({ queryString })
-  const { code } = qs.parse(queryString, { ignoreQueryPrefix: true })
-  console.log('CODE: ', code)
-  // if (code) {
-  //   const accessToken = axios.get(
-  //     `https://gitty.interpretations.dev/access?code=${code}`
-  //   )
-  //   accessToken
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log({ err }))
-  // }
-  // const [login, setLogin] = useState('')
+
   return (
     <>
-      {/* {!isAuthenticated ? <Auth /> : <Account />} */}
-      <Auth />
-      {/* <ul>Gitty takes inspiration from Github</ul>
+      {user ? (
+        <>
+          <>Weclome, {user.email}</>{' '}
+          <button onClick={() => signOut({ supabase, setUser })}>
+            Sign Out
+          </button>{' '}
+        </>
+      ) : (
+        <Auth supabase={supabase} />
+      )}
+      <ul>Gitty takes inspiration from Github</ul>
       <ul>Gitty exists to help incentivize open source software development</ul>
       <ul>
         Ethereum contracts seem to make it a lot easier to develop what Gitty is
@@ -89,16 +78,14 @@ const HomePage = (params) => {
         If one of afforementioned points proves to contribute to a poor
         incentive structure... it will be reevaluated
       </ul>
-      <Link to="/repos">Check it out</Link>
+      {user ? (
+        <Link to="/repos">Check it out</Link>
+      ) : (
+        <>Sign in to check it out</>
+      )}
       <div>
         <a href="https://discord.gg/SZGGsmXkbX">Discord Server</a>
       </div>
-      <input type="text" onChange={(e) => changeHandler(e, setLogin)} />
-      <a
-        href={`https://github.com/login/oauth/authorize?client_id=Iv1.75505cdc084078d2&login=${login}`}
-      >
-        Sign in
-      </a> */}
     </>
   )
 }
