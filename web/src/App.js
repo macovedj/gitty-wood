@@ -21,6 +21,7 @@ const supabaseClient = createClient(
   )
 
 const App = () => (
+  console.log('VARS', process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider>
       <AuthProvider client={supabaseClient} type="supabase">
