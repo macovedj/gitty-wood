@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@redwoodjs/auth'
 // import { context } from '@redwoodjs/api'
 
-import { Link } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router'
 import qs from 'qs'
 import axios from 'axios'
 
