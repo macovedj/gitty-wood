@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@redwoodjs/auth'
-// import { context } from '@redwoodjs/api'
 
 import { Link, routes } from '@redwoodjs/router'
-import qs from 'qs'
-import axios from 'axios'
 
-import Account from 'src/components/Account'
 import Auth from 'src/components/Auth'
 
 const changeHandler = (e, setLogin) => {
