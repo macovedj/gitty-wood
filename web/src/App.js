@@ -20,9 +20,7 @@ const App = () => (
     <RedwoodProvider>
       <AuthProvider client={supabaseClient} type="supabase">
         <RedwoodApolloProvider>
-          <Routes
-            params={[process.env.SUPABASE_URL, process.env.SUPABASE_KEY]}
-          />
+          <Routes />
         </RedwoodApolloProvider>
       </AuthProvider>
     </RedwoodProvider>
