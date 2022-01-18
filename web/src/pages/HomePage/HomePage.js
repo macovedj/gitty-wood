@@ -79,7 +79,7 @@ const HomePage = (params) => {
         incentive structure... it will be reevaluated
       </ul>
       {user ? (
-        <Link to="/repos">Check it out</Link>
+        <Link to={routes.user({id: user.id})}>Check it out</Link>
       ) : (
         <>Sign in to check it out</>
       )}
