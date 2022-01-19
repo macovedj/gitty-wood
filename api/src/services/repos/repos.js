@@ -12,10 +12,10 @@ export const repo = async ({ name }) => {
   return { repo: name, contents: body.repoContents }
 }
 
-export const createRepo = async ({ name }) => {
-  const res = await fetch(`http://64.227.20.27:8080/repos/${name}`, {
-    method: 'post',
-  })
-  const repo = await res.json()
-  return repo.repo
-}
+// export const createRepo = async ({ name }) => {
+//   const res = await fetch(`http://64.227.20.27:8080/repos/${name}`, {
+//     method: 'post',
+//   })
+//   const repo = await res.json()
+//   return repo.repo
+// }

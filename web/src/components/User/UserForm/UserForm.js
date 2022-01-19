@@ -29,15 +29,15 @@ const UserForm = (props) => {
         />
 
         <Label
-          name="name"
+          url="url"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Name
+          url
         </Label>
         <TextField
-          name="name"
-          defaultValue={props.user?.name}
+          url="url"
+          // defaultValue={props.user?.name}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
@@ -45,7 +45,7 @@ const UserForm = (props) => {
 
         <FieldError name="name" className="rw-field-error" />
 
-        <Label
+        {/* <Label
           name="repos"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -60,7 +60,7 @@ const UserForm = (props) => {
           validation={{ required: true }}
         />
 
-        <FieldError name="repos" className="rw-field-error" />
+        <FieldError name="repos" className="rw-field-error" /> */}
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

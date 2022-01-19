@@ -11,7 +11,7 @@ const CREATE_USER_MUTATION = gql`
   }
 `
 
-const NewUser = () => {
+const NewUser = ({id}) => {
   const [createUser, { loading, error }] = useMutation(CREATE_USER_MUTATION, {
     onCompleted: () => {
       toast.success('User created')
@@ -20,7 +20,8 @@ const NewUser = () => {
   })
 
   const onSave = (input) => {
-    createUser({ variables: { input } })
+    console.log({input, id})
+    createUser({ variables: { ...input, id} })
   }
 
   return (

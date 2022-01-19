@@ -15,7 +15,7 @@ export const schema = gql`
     repo(name: String!): Repo!
   }
 
-  type Mutation {
-    createRepo(name: String!): String!
-  }
+  # type Mutation {
+  #   createRepo(name: String!): String!
+  # }
 `

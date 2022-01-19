@@ -29,13 +29,13 @@ model Contact {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
+  id    String       @id
   name  String
-  repos Repo[]
+  repos Repository[]
 }
 
-model Repo {
-  repoUrl String @id
-  name    String
+model Repository {
+  repoUrl String  @id
+  name    String?
   owners  User[]
 }
