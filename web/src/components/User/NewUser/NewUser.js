@@ -21,7 +21,7 @@ const NewUser = ({id}) => {
 
   const onSave = (input) => {
     console.log({input, id})
-    createUser({ variables: { ...input, id} })
+    createUser({ variables: { input: {id, name: 'hello', repos: [ { repoUrl: 'hello', owners: [{}] } ] } } })
   }
 
   return (
