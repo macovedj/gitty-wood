@@ -13,4 +13,4 @@ Gitty provides a means of publicly displaying the funding of repos to see how th
 
 ## Why Ethereum?
 
-Ethereum contracts that seem to make it a lot easier to develop what Gitty is trying to do. Specifically, Ethereum enables select equity holders to only increase the number of holders after they've voted. It also handles a lot of that development work for you.
+Ethereum contracts appear to make it easier to develop what Gitty is trying to do. Specifically, Ethereum enables select equity holders to only increase the number of holders after they've voted. It also handles a lot of that development work for you.
