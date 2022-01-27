@@ -36,7 +36,7 @@ const HomePage = (params) => {
     <>
       {user ? (
         <>
-          <>Weclome, {user.email}</>{' '}
+          <>Welcome, {user.email}</>{' '}
           <button onClick={() => signOut({ supabase, setUser })}>
             Sign Out
           </button>{' '}
@@ -67,15 +67,15 @@ const HomePage = (params) => {
       </ul>
       <ul>
         This incentivizes stake holders to increase the value of the code... the
-        code is an asset that offers utility, and that is how it derives it's
+        code is an asset that offers utility, and that is how it derives its
         value, even though it is free to use
       </ul>
       <ul>
-        If one of afforementioned points proves to contribute to a poor
-        incentive structure... it will be reevaluated
+        If one of aforementioned points proves to contribute to a poor incentive
+        structure... it will be reevaluated
       </ul>
       {user ? (
-        <Link to={routes.user({id: user.id})}>Check it out</Link>
+        <Link to={routes.user({ id: user.id })}>Check it out</Link>
       ) : (
         <>Sign in to check it out</>
       )}
