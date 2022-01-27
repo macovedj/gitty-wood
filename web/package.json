@@ -13,16 +13,14 @@
     ]
   },
   "dependencies": {
-    "@redwoodjs/auth": "^0.41.0",
-    "@redwoodjs/forms": "0.35.2",
-    "@redwoodjs/router": "0.35.2",
-    "@redwoodjs/web": "0.35.2",
-    "@supabase/supabase-js": "^1.29.1",
-    "axios": "^0.21.1",
-    "got": "^11.8.2",
-    "netlify-identity-widget": "^1.9.2",
-    "prop-types": "15.7.2",
-    "qs": "^6.10.1",
+    "@redwoodjs/auth": "0.42.1",
+    "@redwoodjs/forms": "0.42.1",
+    "@redwoodjs/router": "0.42.1",
+    "@redwoodjs/web": "0.42.1",
+    "@supabase/supabase-js": "^1.29.4",
+    "ethers": "^5.5.3",
+    "got": "^12.0.1",
+    "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }

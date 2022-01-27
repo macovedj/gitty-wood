@@ -8,7 +8,7 @@
     ]
   },
   "devDependencies": {
-    "@redwoodjs/core": "0.35.2"
+    "@redwoodjs/core": "0.42.1"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
@@ -16,14 +16,9 @@
   },
   "engines": {
     "node": ">=14.17 <=16.x",
-    "yarn": "1.x"
+    "yarn": ">=1.15 <2"
   },
-  "dependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.2",
-    "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "chai": "^4.3.4",
-    "ethereum-waffle": "^3.4.0",
-    "ethers": "^5.4.7",
-    "hardhat": "^2.6.6"
+  "prisma": {
+    "seed": "yarn rw exec seed"
   }
 }

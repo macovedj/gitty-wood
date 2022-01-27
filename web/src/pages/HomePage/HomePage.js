@@ -1,49 +1,94 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { MetaTags, useMutation } from '@redwoodjs/web'
 import { useAuth } from '@redwoodjs/auth'
-
 import { Link, routes } from '@redwoodjs/router'
+import { useApolloClient } from '@apollo/client'
 
-import Auth from 'src/components/Auth'
+const GET_USER = gql`
+  query HomePageGetUser($id: String!) {
+    user(id: $id) {
+      id
+    }
+  }
+`
 
-const changeHandler = (e, setLogin) => {
-  setLogin(e.target.value)
-}
-async function checkUser({ supabase, setUser }) {
-  const user = await supabase.auth.user()
-  console.log({ user })
-  setUser(user)
-}
+const CREATE_USER = gql`
+  mutation HomePageCreateUser($input: CreateUserInput!) {
+    createUser(input: $input) {
+      id
+      repos
+    }
+  }
+`
 
-async function signInWithGithub({ supabase }) {
-  await supabase.auth.signIn({
-    provider: 'github',
-  })
-}
-async function signOut({ supabase, setUser }) {
-  await supabase.auth.signOut()
-  setUser(null)
-}
-
-const HomePage = (params) => {
-  const [user, setUser] = useState(null)
-  const { client: supabase } = useAuth()
+const HomePage = () => {
+  const {
+    isAuthenticated,
+    logIn,
+    logOut,
+    loading: authLoading,
+    currentUser,
+  } = useAuth()
+  const [loading, setLoading] = useState(false)
+  const [gittyUser, setGittyUser] = useState()
+  const client = useApolloClient()
+  // TODO: show loading state, and handle errors
+  const [createUser, /* { loading: createUserLoading, error } */] =
+    useMutation(CREATE_USER)
 
   useEffect(() => {
-    checkUser({ supabase, setUser })
-  }, [])
+    if (currentUser) {
+      client
+        .query({
+          query: GET_USER,
+          variables: { id: currentUser.sub },
+        })
+        .then(({ data }) => {
+          if (!data.user) {
+            createUser({
+              variables: { input: { id: currentUser.sub, repos: [] } },
+            }).then((user) => {
+              setGittyUser(user)
+            })
+          } else {
+            setGittyUser(data.user)
+          }
+        })
+    }
+  }, [currentUser])
 
   return (
     <>
-      {user ? (
+      <MetaTags title="Home" description="Home page" />
+
+      <h1>HomePage</h1>
+      {loading || authLoading ? (
+        <p>Loading auth...</p>
+      ) : isAuthenticated ? (
         <>
-          <>Welcome, {user.email}</>{' '}
-          <button onClick={() => signOut({ supabase, setUser })}>
+          Welcome, {currentUser.email}{' '}
+          <button
+            onClick={async () => {
+              setLoading(true)
+              setGittyUser(undefined)
+              await logOut()
+              setLoading(false)
+            }}
+          >
             Sign Out
-          </button>{' '}
+          </button>
         </>
       ) : (
-        <Auth supabase={supabase} />
+        <button
+          onClick={() => {
+            setLoading(true)
+            logIn({ provider: 'github', redirectTo: 'http://localhost:8910' })
+          }}
+        >
+          Sign in
+        </button>
       )}
+
       <ul>Gitty takes inspiration from Github</ul>
       <ul>Gitty exists to help incentivize open source software development</ul>
       <ul>
@@ -74,8 +119,8 @@ const HomePage = (params) => {
         If one of aforementioned points proves to contribute to a poor incentive
         structure... it will be reevaluated
       </ul>
-      {user ? (
-        <Link to={routes.user({ id: user.id })}>Check it out</Link>
+      {gittyUser ? (
+        <Link to={routes.user({ id: gittyUser.id })}>Check it out</Link>
       ) : (
         <>Sign in to check it out</>
       )}
