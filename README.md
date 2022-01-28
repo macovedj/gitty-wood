@@ -21,7 +21,7 @@ Ethereum contracts appear to make it easier to develop what Gitty is trying to d
  2. `yarn install`
  3. Create an empty .env file
  4. Create a project on Supabase so you can use auth
- 5. Set up OAth with GitHub on Supabase following this guide:
+ 5. Set up OAuth with GitHub on Supabase following this guide:
     https://supabase.com/docs/guides/auth/auth-github
  6. Grab the keys you need from your Supabase account and add them to your .env
     file
