@@ -81,7 +81,7 @@ const User = ({ user }) => {
           className="rw-button rw-button-red"
           onClick={() => onDeleteClick(user.id)}
         >
-          Delete
+          Delet
         </button>
       </nav>
     </>

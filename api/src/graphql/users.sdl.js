@@ -1,8 +1,14 @@
 export const schema = gql`
-  type User {
+  input User {
     id: String!
-    name: String!
-    repos: [String]!
+    name: String
+    repos: [Repository]
+  }
+
+  input Repository {
+    repoUrl: String
+    name: String
+    owners: [User]
   }
 
   type Query {
@@ -11,8 +17,9 @@ export const schema = gql`
   }
 
   input CreateUserInput {
+    id: String
     name: String!
-    repos: [String]!
+    repos: [Repository]!
   }
 
   input UpdateUserInput {

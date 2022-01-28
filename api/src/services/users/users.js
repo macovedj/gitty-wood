@@ -16,7 +16,8 @@ export const user = ({ id }) => {
   })
 }
 
-export const createUser = ({ input }) => {
+export const createUser = ({ input,  }) => {
+  console.log('SERVICES FILES')
   return db.user.create({
     data: input,
   })
