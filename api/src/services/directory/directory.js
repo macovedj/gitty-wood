@@ -1,4 +1,5 @@
-const fetch = require('node-fetch')
+// const fetch = require('node-fetch')
+import fetch from 'node-fetch'
 
 export const directory = async ({ repoName, path }) => {
   const res = await fetch(

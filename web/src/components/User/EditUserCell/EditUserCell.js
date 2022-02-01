@@ -5,7 +5,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import UserForm from 'src/components/User/UserForm'
 
 export const QUERY = gql`
-  query EditUserById($id: Int!) {
+  query EditUserById($id: String!) {
     user: user(id: $id) {
       id
       name

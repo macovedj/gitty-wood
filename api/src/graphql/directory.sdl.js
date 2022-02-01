@@ -12,6 +12,6 @@ export const schema = gql`
   }
 
   type Query {
-    directory(repoName: String, path: String): Directory
+    directory(repoName: String, path: String): Directory @requireAuth
   }
 `

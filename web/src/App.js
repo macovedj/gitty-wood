@@ -1,6 +1,5 @@
 import { AuthProvider } from '@redwoodjs/auth'
 import { createClient } from '@supabase/supabase-js'
-
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
@@ -17,7 +16,7 @@ const supabaseClient = createClient(
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider>
+    <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider client={supabaseClient} type="supabase">
         <RedwoodApolloProvider>
           <Routes />
