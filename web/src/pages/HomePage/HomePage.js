@@ -91,7 +91,7 @@ const HomePage = () => {
 
       <ul>Gitty takes inspiration from Github</ul>
       <ul>Gitty exists to help incentivize open source software development</ul>
-      <ul>
+      {/* <ul>
         Ethereum contracts seem to make it a lot easier to develop what Gitty is
         trying to do
       </ul>
@@ -99,7 +99,7 @@ const HomePage = () => {
         Specifically, Ethereum enables select equity holders to only increase
         the number of holders after they've voted... and handles a lot of that
         development work for you
-      </ul>
+      </ul> */}
       <ul>
         Gitty provides a means by which core contributors can have financial
         stake in their project{' '}
@@ -119,11 +119,12 @@ const HomePage = () => {
         If one of aforementioned points proves to contribute to a poor incentive
         structure... it will be reevaluated
       </ul>
-      {gittyUser ? (
-        <Link to={routes.user({ id: gittyUser.id })}>Check it out</Link>
-      ) : (
-        <>Sign in to check it out</>
-      )}
+      {/* {gittyUser ? ( */}
+        {/* <Link to={routes.user({ id: gittyUser.id })}>Check it out</Link> */}
+        <Link to={routes.repos()}>Check it out</Link>
+      {/* ) : ( */}
+        {/* <>Sign in to check it out</> */}
+      {/* )} */}
       <div>
         <a href="https://discord.gg/SZGGsmXkbX">Discord Server</a>
       </div>
