@@ -46,7 +46,7 @@ const Routes = () => {
       <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
       <Route path="/about" page={AboutPage} name="about" />
       <Route path="/user/{id:String}" page={UserUserPage} name="user" />
-      <Route path="/users/new/{id:String}" page={UserNewUserPage} name="user" />
+      <Route path="/users/new/{id:String}" page={UserNewUserPage} name="newUser" />
       <Route path="/" page={HomePage} name="home" />
       <Route notfound page={NotFoundPage} />
     </Router>

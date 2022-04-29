@@ -29,13 +29,13 @@ model Contact {
 }
 
 model User {
-  id    String       @id
-  name  String
-  repos Repository[]
+  id    String   @id
+  name  String?
+  repos String[]
 }
 
 model Repository {
-  repoUrl String  @id
+  repoUrl String   @id
   name    String?
-  owners  User[]
+  owners  String[]
 }

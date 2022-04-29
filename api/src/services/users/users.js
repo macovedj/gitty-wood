@@ -1,11 +1,6 @@
 import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
 
-// Used when the environment variable REDWOOD_SECURE_SERVICES=1
-export const beforeResolver = (rules) => {
-  rules.add(requireAuth)
-}
-
 export const users = () => {
   return db.user.findMany()
 }
@@ -17,8 +12,13 @@ export const user = ({ id }) => {
 }
 
 export const createUser = ({ input }) => {
+  // TODO: Figure out how to handle repos
+  delete input.repos
+
   return db.user.create({
-    data: input,
+    data: {
+      id: input.id,
+    },
   })
 }
 

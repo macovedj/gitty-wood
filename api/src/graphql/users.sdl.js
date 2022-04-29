@@ -6,12 +6,13 @@ export const schema = gql`
   }
 
   type Query {
-    users: [User!]!
-    user(id: String!): User
+    users: [User!]! @skipAuth
+    user(id: String!): User @skipAuth
   }
 
   input CreateUserInput {
-    name: String!
+    id: String!
+    name: String
     repos: [String]!
   }
 
@@ -21,8 +22,8 @@ export const schema = gql`
   }
 
   type Mutation {
-    createUser(input: CreateUserInput!): User!
-    updateUser(id: Int!, input: UpdateUserInput!): User!
-    deleteUser(id: Int!): User!
+    createUser(input: CreateUserInput!): User! @requireAuth
+    updateUser(id: String!, input: UpdateUserInput!): User! @requireAuth
+    deleteUser(id: String!): User! @requireAuth
   }
 `
