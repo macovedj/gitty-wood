@@ -82,11 +82,11 @@ const RepoPage = ({ repoName }) => {
     <>
       {owners.length === 0 ? (
         <>
-          <>
+          {/* <>
             Shares have not been minted... no owners exist. Connect wallet
             before minting
-          </>
-          <button onClick={mintShares}>Mint Shares</button>
+          </> */}
+          {/* <button onClick={mintShares}>Mint Shares</button> */}
         </>
       ) : (
         <>
@@ -97,13 +97,13 @@ const RepoPage = ({ repoName }) => {
           <br></br>
         </>
       )}
-      <div>Are you an owner? Send shares to a colleague below</div>
+      <div>Are you an owner? Send funds to a colleague below</div>
       <Form onSubmit={sendShares}>
         <Label name="Receiver" />
         <TextField name="Receiver"></TextField>
         <Label name="Amount" />
         <TextField name="Amount" />
-        <Submit>Send Shares</Submit>
+        {/* <Submit>Send Shares</Submit> */}
       </Form>
       <RepoCell name={repoName} />
       <button onClick={getBalance}>Get Balance</button>
