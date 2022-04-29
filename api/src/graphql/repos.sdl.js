@@ -11,11 +11,11 @@ export const schema = gql`
   }
 
   type Query {
-    repos: [Repo]!
-    repo(name: String!): Repo!
+    repos: [Repo]! @skipAuth
+    repo(name: String!): Repo! @skipAuth
   }
 
   type Mutation {
-    createRepo(name: String!): String!
+    createRepo(name: String!): String! @skipAuth
   }
 `
