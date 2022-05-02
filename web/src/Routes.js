@@ -13,7 +13,7 @@ import PostsLayout from 'src/layouts/PostsLayout'
 
 const userRouteParamTypes = {
   dir: {
-    constraint: /.*/,
+    match: /.*/,
   },
 }
 
