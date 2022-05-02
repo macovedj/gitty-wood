@@ -10,7 +10,3 @@ Gitty provides a means of publicly displaying the funding of repos to see how th
 - When an individual has demonstrated to core contributors that they can offer technical, legal, administrative, or financial support to their project, the core developers can give them equity in their repo in exchange for their offered support.
 - This incentivizes stake holders to increase the value of the code which is an asset that offers utility. Its utility derives its value even though it is free to use.
 - If one of afforementioned points proves to contribute to a poor incentive structure then it will be reevaluated.
-
-## Why Ethereum?
-
-Ethereum contracts appear to make it easier to develop what Gitty is trying to do. Specifically, Ethereum enables select equity holders to only increase the number of holders after they've voted. It also handles a lot of that development work for you.

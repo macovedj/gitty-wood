@@ -2,6 +2,7 @@ import { Link, routes } from '@redwoodjs/router'
 import FileCell from 'src/components/FileCell'
 
 const FilePage = ({ repoName, filePath }) => {
+  console.log({filePath})
   return (
     <>
       <h1>FilePage</h1>

@@ -91,15 +91,6 @@ const HomePage = () => {
 
       <ul>Gitty takes inspiration from Github</ul>
       <ul>Gitty exists to help incentivize open source software development</ul>
-      {/* <ul>
-        Ethereum contracts seem to make it a lot easier to develop what Gitty is
-        trying to do
-      </ul>
-      <ul>
-        Specifically, Ethereum enables select equity holders to only increase
-        the number of holders after they've voted... and handles a lot of that
-        development work for you
-      </ul> */}
       <ul>
         Gitty provides a means by which core contributors can have financial
         stake in their project{' '}
